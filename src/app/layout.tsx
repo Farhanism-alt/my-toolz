@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import PostHogLoader from "@/components/PostHogLoader";
 
-const dmSans = DM_Sans({ subsets: ["latin"] });
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" });
+const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
   title: "SendNow PDF Tools - Free PDF Conversion & Manipulation",
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
   verification: {
     google: "ZVT8Bo_CDTKt4nL_tk4aBvp6Kd5sfHxPoPtAQJHnAl8",
   },
+  icons: {
+    icon: '/icon.png',
+  },
 };
 
 export default function RootLayout({
@@ -29,10 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${dmSans.className} antialiased bg-premium-gradient min-h-screen flex flex-col`}>
+    <html lang="en" className={`scroll-smooth ${dmSans.variable} ${playfair.variable}`}>
+      <body className="font-sans antialiased bg-premium-gradient min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-16">
+        <main className="flex-grow">
           {children}
         </main>
         <Footer />

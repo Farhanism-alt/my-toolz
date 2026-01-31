@@ -29,7 +29,13 @@ export async function chatWithAI(
             content: msg.content
         }));
 
-        const currentMessageContent: any[] = [{ type: "text", text: content }];
+        const lastUserMessage = userMessages[userMessages.length - 1];
+        const currentMessageContent: any[] = [
+            {
+                type: "text",
+                text: `I am providing you with the content of a ${type} document. Please use this context to answer my question accurately.\n\nDOCUMENT CONTENT:\n${content}\n\nUSER QUESTION: ${lastUserMessage.content}`
+            }
+        ];
 
         if (images && images.length > 0) {
             images.forEach(img => {
