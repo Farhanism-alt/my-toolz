@@ -18,6 +18,9 @@ export const metadata: Metadata = {
     siteName: "SendNow PDF Tools",
     type: "website",
   },
+  verification: {
+    google: "ZVT8Bo_CDTKt4nL_tk4aBvp6Kd5sfHxPoPtAQJHnAl8",
+  },
 };
 
 export default function RootLayout({
